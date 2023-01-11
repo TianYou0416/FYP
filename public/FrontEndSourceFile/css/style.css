@@ -1,0 +1,94 @@
+/*-- add-products --*/
+
+/*-- //add-products --*/
+
+/*-- products-page --*/
+/*-- products-right --*/
+.product-w3ls-right {
+    float: right;
+    padding: auto;
+}
+
+.products {
+    padding-top: 1rem;
+}
+
+.w3spl-menu {
+    margin-top: 5em;
+}
+@media (max-width: 991px) {
+    .menu-w3lsgrids {
+        margin-top: 2em;
+    }
+    .menu-w3lsgrids a {
+        font-size: 1.1em;
+    }
+}
+@media (max-width: 800px) {
+    .w3spl-menu {
+        padding-top: 3em;
+    }
+    .w3ls-add-grids a h4 span {
+        font-size: 1.5em;
+    }
+    .w3ls-add-grids a h5 {
+        font-size: 0.9em;
+        letter-spacing: 1px;
+    }
+    .w3ls-add-grids a h6 {
+        margin: 1em 0 0;
+    }
+}
+@media (max-width: 768px) {
+    .products {
+        padding: 3em 0;
+    }
+}
+@media (max-width: 767px) {
+    .product-grids {
+        padding: 0 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .products {
+        padding: 2.5em 0;
+    }
+}
+
+@media (max-width: 384px) {
+    .product-grids {
+        padding: 0 2em;
+    }
+
+    .menu-w3lsgrids a {
+        font-size: 0.9em;
+        padding: 0.6em;
+    }
+
+    .product-grids {
+        padding: 0 1em;
+    }
+}
+@media (max-width: 375px) {
+    .products {
+        padding: 2em 0;
+    }
+    .product-grids {
+        margin-top: 1em;
+    }
+}
+@media (max-width: 320px) {
+    .menu-w3lsgrids a {
+        font-size: 0.85em;
+    }
+    .w3spl-menu {
+        margin-top: 2em;
+        padding-top: 1.5em;
+    }
+
+    .product-grids {
+        padding: 0;
+    }
+}
+/*-- //responsive-design --*/

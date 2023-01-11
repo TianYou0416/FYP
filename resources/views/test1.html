@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <title>Southern Cart</title>
+    <script>
+      function calTotal(){
+        var unit=document.getElementsByName("unit[]");
+        var quantity=document.getElementsByName("quantity[]");
+        var amount=document.getElementsByName("amount[]");
+        var cboxes=document.getElementsByName("item[]");
+        var promoCode = document.getElementById("promoCode");
+        var subtotal=0;
+        var promocode = 0;
+        var len= unit.length;//get number of checkbox
+        for(var i=0;i<len;i++){
+          if(cboxes[i].checked){//run if check box checked
+          var u=parseFloat(unit[i].value);
+          var q=parseFloat(quantity[i].value);
+          var a=u*q;
+          subtotal=subtotal+a;
+          document.getElementsByName("amount[]")[i].value=a;
+            }
+            else{
+              document.getElementsByName("amount[]")[i].value=0;
+            }
+        }  
+        var subtotal=parseFloat(document.getElementById("subtotal").value=subtotal);
+        var sst=0;
+        var total=0;
+        sst=subtotal*0.06;
+        if(promoCode.value === 'baibaii'){
+          promocode=subtotal*0.05;
+          promocode=promocode.toFixed(2);
+          total=subtotal+sst-promocode;
+          document.getElementById("promocode").value='-'+promocode;
+        }else{
+          total=subtotal+sst;
+          document.getElementById("promocode").value='-0';
+        }
+        total=total.toFixed(2);
+        sst=sst.toFixed(2);//make result to two decime place
+        console.log(subtotal);
+        document.getElementById("sst").value=sst;
+        document.getElementById("total").value=total;
+      
+        
+      function calAmount(){
+        var unit=document.getElementsByName("unit[]");
+        var quantity=document.getElementsByName("quantity[]");
+        var amount=document.getElementsByName("amount[]");
+        var len= unit.length;//get number of checkbox
+        for(var i=0;i<len;i++){
+          var u=parseFloat(unit[i].value);
+          var q=parseFloat(quantity[i].value);
+          var a=u*q;
+          document.getElementsByName("amount[]")[i].value=a;
+        }  
+      }
+    </script>
+  </head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+    <div class="col-sm-12">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="home.html">Southern Online</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="product.html">Product</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-expanded="false">
+              Category
+            </a>
+            
+
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="phone.html">Phone</a>
+              <a class="dropdown-item" href="computer.html">Computer</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Disable</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">Contact</a>
+          </li>
+          <li>
+            <a href="cart.html">My Cart <span class="badge badge-info">2</span> </a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h2>My Cart</h2>
+      <table class="table table-bordered">
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>Product</td>
+          <td>Unit Price</td>
+          <td>Quality</td>
+          <td>Amount</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="item[]"value="" onclick="calTotal()"></td>
+          <td>VIVO Y50</td>
+          <td>800 <input type="hidden" name="unit[]" value="800"></td>
+          <td><input type="number" name="quantity[]" id="quantity[]" value="1" min="1" onchange="calAmount()"></td>
+          <td><input type="number" name="amount[]" id="amount[]" Value="" readomly></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="item[]"value=" "onclick="calTotal()"></td>
+          <td>IPHONE 13</td>
+          <td>3599 <input type="hidden" name="unit[]" value="3599"></td>
+          <td><input type="number" name="quantity[]" id="quantity[]" value="1" min="1" onchange="calAmount()"></td>
+          <td><input type="number" name="amount[]" id="amount[]" Value="" readomly></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="item[]"value="" onclick="calTotal()"></td>
+          <td>OPPO RENO 7</td>
+          <td>1469 <input type="hidden" name="unit[]" value="1469"></td>
+          <td><input type="number" name="quantity[]" id="quantity[]" value="1" min="1" onchange="calAmount()"></td>
+          <td><input type="number" name="amount[]" id="amount[]" Value="" readomly></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="item[]"value="" onclick="calTotal()"></td>
+          <td>HUAWEI NOVA 9</td>
+          <td>1498 <input type="hidden" name="unit[]" value="1498"></td>
+          <td><input type="number" name="quantity[]" id="quantity[]" value="1" min="1" onchange="calAmount()"></td>
+          <td><input type="number" name="amount[]" id="amount[]" Value="" readomly></td>
+        </tr>
+        <tr>
+          <td colspan="4">Subtotal</td>
+          <td><input type="number" name="subtotal" id="subtotal" Value="0" readonly></td>
+        </tr>
+        <tr>
+          <td colspan="4">SST %</td>
+          <td><input type="number" name="sst" id="sst" Value="" readonly></td>
+        </tr>
+        <tr>
+          <td colspan="4">Promo Code <input type="text" name="promoCode" id="promoCode"></td>
+          <td><input type="number" name="promocode" id="promocode" Value="" readonly></td>
+        </tr>
+        <tr>
+          <td colspan="4">Total Amount <button class="btn btn-danger" onclick="location
+            .href='delivery.html'">Pay Now</button></td>
+          <td><input type="number" name="total" id="total" Value="" readonly></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+ </div>
+</div>
+  <div class="row" style="background-color: peachpuff;">
+    <div class="col-md-3">
+      <strong>who we are?</strong><br>
+      we are selling mobile phone and computer to students with reasonabke price.
+      <br><br>&copy;copyright <strong>Southern online</strong>.All Rights Reserved
+    </div>
+    <div class="col-md-3">
+      <strong>Catergories</strong><br>
+      <a href="phone.html">Phone</a><br>
+      <a href="computer.html">Computer</a>
+    </div>
+    <div class="col-md-3">
+      <a href="https://www.facabook.com"><img src="facebook.png" width="50" alt=""></a>
+      <a href="https://www.instagram.com"><img src="instagram.png" width="50" alt=""></a>
+      <a href="https://wa.link/9u47q6"><img src="whatsapp.png" width="50" alt=""></a>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
